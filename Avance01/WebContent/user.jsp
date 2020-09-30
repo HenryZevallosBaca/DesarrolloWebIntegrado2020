@@ -121,16 +121,16 @@
                     %>
                        
                         <tr>
-                            <td class="text-center"><% rs.getString("nombres");%></td>
-                            <td class="text-center"><% rs.getString("apellidos");%></td>
-                            <td class="text-center"><% rs.getString("email");%></td>
-                            <td class="text-center"><% rs.getString("contraseña");%></td>
+                            <td class="text-center"><%=rs.getString("nombres")%></td>
+                            <td class="text-center"><%=rs.getString("apellidos")%></td>
+                            <td class="text-center"><%=rs.getString("email")%></td>
+                            <td class="text-center"><%=rs.getString("contraseña")%></td>
                             <td class="text-center">
                             <!-- <input type="hidden" value="<//%= rs.getInt("Id_Usuario")%>" id="Editar"/><input type="submit" class="btn btn-warning" data-toggle="modal" data-target="#myModal1" value="Editar"/> -->
                                 
                                
                                 <a href="Editar.jsp" class="btn btn-primary">Editar</a>
-                                <a href="Delete.jsp" class="btn btn-danger">Delete</a>
+                                <a href="delete.jsp" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         <%}%>

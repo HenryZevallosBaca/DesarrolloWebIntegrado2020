@@ -1,3 +1,4 @@
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <html lang="en">
@@ -75,6 +76,31 @@
 				</div>
 			</div>
 <!-- partial:index.partial.html -->
+		<%//CONECTANOD A LA BASE DE DATOS:
+		Connection con;
+		String url="jdbc:mysql://localhost:3306/avance01";
+		String Driver="com.mysql.jdbc.Driver";
+		String user="root";
+		String clave="";
+		Class.forName(Driver);
+		con=DriverManager.getConnection(url,user,clave);
+		//Emnpezamos Listando los Datos de la Tabla Usuario pero de la fila seleccionada
+		PreparedStatement ps;
+		String nom, ape, em, cont;
+		nom=request.getParameter("Nombres");
+		ape=request.getParameter("Apellidos");
+		em=request.getParameter("Email");
+		cont=request.getParameter("password");
+
+		if(nom!=null && ape!=null && em!=null && cont!=null){
+			ps=con.prepareStatement("insert into user(nombres, apellidos, email, contraseña)values('"+nom+"','"+ape+"','"+em+"','"+cont+"')");
+			ps.executeUpdate();
+			//response.sendRedirect("index.jsp");
+			}
+		%>
+        
+		
+
 <form action="#" method="post">
   <h2>Crear Cuenta</h2>
         <p>
@@ -83,7 +109,7 @@
 		</p>
 		<p>
 			<label for="Apellidos" class="floatLabel">Apellidos</label>
-			<input id="Email" name="Email" type="text">
+			<input id="Email" name="Apellidos" type="text">
 		</p>
 		<p>
 			<label for="Apellidos" class="floatLabel">Email</label>
